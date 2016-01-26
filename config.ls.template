@@ -1,0 +1,7 @@
+module.exports =
+
+    gulp:
+        reload-port: 8601
+        minify: false
+
+    http-port: 8600
