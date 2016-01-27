@@ -27,7 +27,7 @@ module.exports = create-class do
 
             # BUTTON (Add)
             button do
-                on-click: ~> add @state.a, @state.b
+                on-click: ~> dispatch (add @state.a, @state.b)
                 \add
 
             # RESULT

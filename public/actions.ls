@@ -1,7 +1,5 @@
-{dispatch} = require \./store.ls
-
-# add :: String -> String -> Dispatch()
-export add = (a, b) !->
+# add :: String -> String -> Store -> (Store -> ())
+export add = (a, b, {dispatch}) !-->
     dispatch type: \ADD_REQUEST_START
     fetch "/api/add?a=#{a}&b=#{b}"
         .then (response) ~> 

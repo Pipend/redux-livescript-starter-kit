@@ -35,7 +35,13 @@ add-route = (state = {a: \0, b: \0, result: 0, loading: false, error: null}, {ty
         | \RESET =>  a: \0, b: \0, result: 0, loading: false, error: null
         | _ => state
 
-module.exports = create-store combine-reducers {add-route, counter-route}
+{dispatch}:store = create-store combine-reducers {add-route, counter-route}
+
+module.exports = {} <<< store <<<
+
+    # this is the same as using the redux thunk middleware
+    dispatch: (action) ->
+        if typeof action == \function then action store else dispatch action
 
 '''
 combine-reducers {add-route, counter-route}, returns the following reducer:
