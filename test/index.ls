@@ -43,18 +43,18 @@ describe 'redux store', ->
         assert \5 == get-state!.add-route.b
 
     specify 'REQUEST_START must set loading to true', ->
-        dispatch type: \REQUEST_START
+        dispatch type: \ADD_REQUEST_START
         assert true == get-state!.add-route.loading
 
-    specify 'REQUEST_SUCCESS must update state with the result & clear loading flag', ->
-        dispatch type: \REQUEST_SUCCESS, result: 10
+    specify 'ADD_REQUEST_SUCCESS must update state with the result & clear loading flag', ->
+        dispatch type: \ADD_REQUEST_SUCCESS, result: 10
         {error, loading, result} = get-state!.add-route
         assert null == error
         assert false == loading
         assert 10 == result
 
-    specify 'REQUEST_FAIL must clear the loading flag and update the state with the error', ->
-        dispatch type: \REQUEST_FAIL, error: \Error
+    specify 'ADD_REQUEST_FAIL must clear the loading flag and update the state with the error', ->
+        dispatch type: \ADD_REQUEST_FAIL, error: \Error
         {error, loading} = get-state!.add-route
         assert \Error == error
         assert false == loading

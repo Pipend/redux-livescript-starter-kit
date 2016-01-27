@@ -15,18 +15,18 @@ add-route = (state = {a: \0, b: \0, result: 0, loading: false, error: null}, {ty
         | \A_CHANGED => {} <<< state <<< {a}
         | \B_CHANGED => {} <<< state <<< {b}
 
-        | \REQUEST_START => 
+        | \ADD_REQUEST_START => 
             {} <<< state <<< 
                 loading: true
                 error: null
 
-        | \REQUEST_SUCCESS => 
+        | \ADD_REQUEST_SUCCESS => 
             {} <<< state <<< 
                 loading: false
                 error: null
                 result: result
 
-        | \REQUEST_FAIL => 
+        | \ADD_REQUEST_FAIL => 
             {} <<< state <<< 
                 loading: false
                 error: error

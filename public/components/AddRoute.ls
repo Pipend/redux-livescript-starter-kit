@@ -1,6 +1,7 @@
 {create-class, create-factory, DOM:{div, button, input}}:React = require \react
 {find-DOM-node} = require \react-dom
 {dispatch, get-state, subscribe} = require \../store.ls
+{add} = require \../actions.ls
 
 module.exports = create-class do
 
@@ -26,21 +27,7 @@ module.exports = create-class do
 
             # BUTTON (Add)
             button do
-                on-click: ~> 
-                    dispatch type: \REQUEST_START
-                    fetch "/api/add?a=#{@state.a}&b=#{@state.b}"
-                        .then (response) ~> 
-
-                            # SUCCESS (200 - 299)
-                            if response.ok
-                                response.json! .then ({result}) ->
-                                    dispatch type: \REQUEST_SUCCESS, result: result
-
-                            # FAIL
-                            else
-                                dispatch type: \REQUEST_FAIL, error: response.status
-
-                        .catch (error) ~> dispatch type: \REQUEST_FAIL, error: error
+                on-click: ~> add @state.a, @state.b
                 \add
 
             # RESULT
